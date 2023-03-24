@@ -3,19 +3,28 @@ const {Dog} = require('../db');
 const Dg = {}
 
 
-Dg.createDog = async(name, height, weight, years, image)=>{
-    const newVideogame = await Dog.create({
+Dg.createDog = async(image, name, minHeight, maxHeight, minWeight, maxWeight, minYears, maxYears)=>{
+    const newDog = await Dog.create({
+        image, 
         name, 
-        height, 
-        weight, 
-        years, 
-        image 
+        minHeight, 
+        maxHeight, 
+        minWeight, 
+        maxWeight, 
+        minYears, 
+        maxYears
     });
-    return newVideogame
+    return newDog
 }
 Dg.getAll = async()=>{
     const result = await Dog.findAll();
     return result;
+}
+
+Dg.getID = async(id)=>{
+    DBresult = await Dog.findByPk(id);
+
+    return DBresult;  
 }
 
 
